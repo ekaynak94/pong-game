@@ -35,4 +35,11 @@ export default class Paddle {
     rect.setAttributeNS(null, "fill", this.color);
     svg.appendChild(rect);
   }
+  coordinates(x, y, width, height) {
+    let leftX = x;
+    let rightX = x + width;
+    let topY = y;
+    let bottomY = y + height;
+    return { leftX, rightX, topY, bottomY };
+  }
 }
