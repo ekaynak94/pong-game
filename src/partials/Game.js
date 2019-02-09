@@ -35,14 +35,18 @@ export default class Game {
     );
     this.ball = new Ball(this.ballRadius, this.width, this.height);
     this.pause = false;
-    this.boardSize = 32;
-    this.scoreBoard = new Score(
-      this.width / 2 - this.boardSize,
-      this.boardSize,
-      this.boardSize,
-      this.player1,
-      this.player2
+    this.boardSize = 16;
+    this.score1 = new Score(
+      this.width / 2 - this.boardSize * 3,
+      this.boardSize * 2,
+      this.boardSize
     );
+    this.score2 = new Score(
+      this.width / 2 + 2.5 * this.boardSize,
+      this.boardSize * 2,
+      this.boardSize
+    );
+
     document.addEventListener("keydown", event => {
       if (event.key === KEYS.spaceBar) {
         this.pause = !this.pause;
@@ -63,7 +67,8 @@ export default class Game {
       this.player1.render(svg);
       this.player2.render(svg);
       this.ball.render(svg, this.player1, this.player2);
-      this.scoreBoard.render(svg);
+      this.score1.render(svg, this.player1.score);
+      this.score2.render(svg, this.player2.score);
     }
   }
 }

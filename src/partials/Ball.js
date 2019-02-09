@@ -7,6 +7,7 @@ export default class Ball {
     this.direction = (Math.floor(Math.random() * 2) - 0.5) * 2;
     this.color = "#FFFFFF";
     this.reset();
+    this.ping = new Audio("../../public/sounds/pong-01.wav");
   }
   reset() {
     this.x = this.boardWidth / 2;
@@ -18,8 +19,8 @@ export default class Ball {
   }
   render(svg, player1, player2) {
     let circle = document.createElementNS(SVG_NS, "circle");
-    this.x += this.vx;
-    this.y += this.vy;
+    this.x += this.vx * 1.5;
+    this.y += this.vy * 1.5;
     this.paddleCollision(player1, player2);
     this.wallCollison(player1, player2);
     circle.setAttributeNS(null, "cx", this.x);
@@ -97,9 +98,11 @@ export default class Ball {
     }
     if (paddleHorizontalHit) {
       this.vx *= -1;
+      this.ping.play();
     } else if (paddleVerticalHit) {
       this.vy *= -1;
       this.vx *= -1;
+      this.ping.play();
     }
   }
 }
