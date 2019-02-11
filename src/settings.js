@@ -18,3 +18,4 @@ export const boardColor = "#353535";
 export const lineWidth = "2";
 export const dashes = "10,15";
 export const paddleSpeed = 10;
+export const finalScore = 10;

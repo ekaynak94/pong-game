@@ -5,7 +5,8 @@ import {
   paddleHeight,
   boardGap,
   ballRadius,
-  scoreBoardSize
+  scoreBoardSize,
+  finalScore
 } from "../settings";
 import Board from "./Board";
 import Paddle from "./Paddle";
@@ -55,7 +56,15 @@ export default class Game {
       }
     });
   }
-
+  gameOver() {
+    if (
+      this.player1.score === finalScore ||
+      this.player2.score === finalScore
+    ) {
+      return true;
+    }
+    return false;
+  }
   render() {
     if (this.pause !== true) {
       this.gameElement.innerHTML = "";
