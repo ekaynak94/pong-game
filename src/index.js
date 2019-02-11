@@ -4,11 +4,7 @@ import { boardWidth, boardHeight } from "./settings";
 
 // create a game instance
 let game = new Game("game", boardWidth, boardHeight);
-
 (function gameLoop() {
   game.render();
   requestAnimationFrame(gameLoop);
-  if (game.gameOver() === true) {
-    game = new Game("game", boardWidth, boardHeight);
-  }
 })();

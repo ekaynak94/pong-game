@@ -31,7 +31,7 @@ export default class Ball {
   }
   goal(player) {
     player.score++;
-    this.ballSpeed *= 1.05;
+    this.ballSpeed *= 1.1;
     this.reset();
   }
   wallCollison(player1, player2) {

@@ -1,11 +1,12 @@
 import { SVG_NS, color, paddleSpeed } from "../settings";
 export default class Paddle {
-  constructor(boardHeight, width, height, x, y, upKey, downKey) {
+  constructor(name, boardHeight, width, height, x, y, upKey, downKey) {
     this.boardHeight = boardHeight;
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
+    this.name = name;
     this.score = 0;
     document.addEventListener("keydown", event => {
       switch (event.key) {
