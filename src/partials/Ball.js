@@ -31,7 +31,7 @@ export default class Ball {
   }
   goal(player) {
     player.score++;
-    this.ballSpeed *= 1.08;
+    this.ballSpeed = 1;
     this.reset();
   }
   wallCollison(player1, player2) {
@@ -99,10 +99,12 @@ export default class Ball {
     }
     if (paddleHorizontalHit) {
       this.vx *= -1;
+      this.ballSpeed *= 1.1;
       this.ping.play();
     } else if (paddleVerticalHit) {
       this.vy *= -1;
       this.vx *= -1;
+      this.ballSpeed *= 1.1;
       this.ping.play();
     }
   }
