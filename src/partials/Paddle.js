@@ -1,4 +1,10 @@
-import { SVG_NS, color, paddleSpeed } from "../settings";
+import {
+  SVG_NS,
+  color,
+  paddleSpeed,
+  boardColor,
+  fontFamily
+} from "../settings";
 export default class Paddle {
   constructor(name, boardHeight, width, height, x, y, upKey, downKey) {
     this.boardHeight = boardHeight;
@@ -33,6 +39,16 @@ export default class Paddle {
     rect.setAttributeNS(null, "y", this.y);
     rect.setAttributeNS(null, "fill", color);
     svg.appendChild(rect);
+    let text = document.createElementNS(SVG_NS, "text");
+    text.setAttributeNS(null, "x", this.x + this.width / 2);
+    text.setAttributeNS(null, "y", this.y + this.height / 2);
+    text.setAttributeNS(null, "font-family", fontFamily);
+    text.setAttributeNS(null, "font-size", this.width * 1.3);
+    text.setAttributeNS(null, "fill", boardColor);
+    text.setAttributeNS(null, "writing-mode", "tb");
+    text.setAttributeNS(null, "text-anchor", "middle");
+    text.textContent = this.name;
+    svg.appendChild(text);
   }
   coordinates(x, y, width, height) {
     let leftX = x;

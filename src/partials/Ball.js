@@ -31,7 +31,7 @@ export default class Ball {
   }
   goal(player) {
     player.score++;
-    this.ballSpeed *= 1.1;
+    this.ballSpeed *= 1.08;
     this.reset();
   }
   wallCollison(player1, player2) {
@@ -40,11 +40,11 @@ export default class Ball {
     const hitTop = this.y - this.radius <= 0;
     const hitBottom = this.y + this.radius >= this.boardHeight;
     if (hitLeft) {
-      this.goal(player2);
       this.direction = -1;
+      this.goal(player2);
     } else if (hitRight) {
-      this.goal(player1);
       this.direction = 1;
+      this.goal(player1);
     } else if (hitTop || hitBottom) {
       this.vy = -1 * this.vy;
     }
